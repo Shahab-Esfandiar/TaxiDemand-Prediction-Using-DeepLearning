@@ -2,7 +2,7 @@
 ![manhattan_taxis_image](https://github.com/user-attachments/assets/d03a2d17-d307-494a-a8ef-c49420059cff)
 
 *This is my __final thesis__ project for __Bacherlor's KNTU Geomatic engineering__.*
-[Custom foo description](#foo)
+[Custom foo description](#Foo)
 
 * <a href="1.Introduction">1. Introduction</a>
 * [2. What Data Have I used?](#2.-What-Data-Have-I-used)
