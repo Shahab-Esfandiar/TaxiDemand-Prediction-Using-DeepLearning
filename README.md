@@ -3,7 +3,7 @@
 
 *This is my __final thesis__ project for __Bacherlor's KNTU Geomatic engineering__.*
 
-* <a href="1.Introduction">1. Introduction</a>
+* <a name="1.Introduction">1. Introduction</a>
 * [2. What Data Have I used?](#2.-What-Data-Have-I-used)
 * [3. Methodology & Internal Structure](#3.Methodology-Internal-Structure)
    * [3.1. Data Prepration](#2.1.Data-Prepration)
