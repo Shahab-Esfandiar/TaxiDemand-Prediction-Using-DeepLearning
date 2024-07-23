@@ -4,7 +4,7 @@
 *This is my __final thesis__ project for __Bacherlor's KNTU Geomatic engineering__.*
 
 * [1.Introduction](#1_Introduction)
-* [2. What Data Have I used?](#2.-What-Data-Have-I-used)
+* [2. What Data Have I used?](#2_What-Data-Have-I-used)
 * [3. Methodology & Internal Structure](#3.Methodology-Internal-Structure)
    * [3.1. Data Prepration](#2.1.Data-Prepration)
    * [3.2. Exploratory Data Analysis(EDA)](#2.2.Exploratory-Data-Analysis(EDA))
@@ -25,4 +25,4 @@
 
 ---
 
-
+# 2_What Data Have I used?
