@@ -200,7 +200,7 @@ These are the relations found between the variables :*
   
 ---
 
-# 6_Conclusions
+# 7_Conclusions
 *As expected, the accuracy of the model is much better in the regions where the number of requests is __higher__. According to all the available data and results, it can be said that the model is accurate. However, it is possible to increase the accuracy of the model in __low demand__ areas by increasing the amount of data or their time intervals.*
 
 *Also, to increase the accuracy of the model in general, data such as traffic and the amount of taxi drop-offs in each area can be used as effective features.*
