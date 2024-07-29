@@ -186,15 +186,15 @@ These are the relations found between the variables :*
 ---
 
 # 6_Execution Guide
-### If you want to run the app
-
-**Note**:  *There are multiple environments on which you can execute the app and I am not capable to cover them all. So these steps refer to my personal environment(Windows 11)*
+### If you want to run the WebApp
 
   1. Clone or download the **repository**.
   2. navigate to ``TaxiDemand-Prediction-Using-DeepLearning\``.
   3. Type ``streamlit run StreamlitMap.py`` in the command line.
-  4. Copy the returned Network URL `http://192.168.1.106:8501` and paste in your internet browser.
+  4. Copy the returned Network URL like `(http://172.19.0.1:8501)` and paste in your internet browser.
   5. That´s it! The app takes a couple of seconds to load cause using __Big data__.
+
+**Note**:  *There are multiple environments on which you can execute the app and I am not capable to cover them all. So these steps refer to my personal environment(Windows 11)*
 
   ![choropleth_combined](https://github.com/user-attachments/assets/fd129f61-f176-4fd0-ac64-8dbd72e2e5a5)
   
