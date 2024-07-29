@@ -145,7 +145,9 @@ These are the relations found between the variables :*
 # 4_Model Design
 *In this step, we design the neural network model using **CNN-LSTM layers** and combined that with **Multihead Attention mechanism**.*
 
-- *for the basic model, we determine the default parameters such as batch size and `Adam's` optimization and compile it. Then we run it with **100 epochs** on our training and validation data to obtain the initial accuracy of the architecture.*
+- *for the basic model, i determine the default parameters such as batch size and `Adam's` optimization and compile it. Then we run it with **100 epochs** on our training and validation data to obtain the initial accuracy of the architecture.*
+
+- *Also i used multihead attention layer in my model because, multiple attention heads operate in parallel, each with its own set of weights and parameters. These heads independently identify different dependencies in the data and examine information from various perspectives. The outputs of these heads are then combined to form a comprehensive view of the data. This approach helps the model simultaneously recognize short-term and long-term dependencies and process diverse information concurrently, leading to more accurate predictions and improved performance.*
 
   ![opt_model_diagram](https://github.com/user-attachments/assets/4e9e0794-d513-4032-bb55-dd27b2876f8e)
   ---
