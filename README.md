@@ -205,9 +205,9 @@ These are the relations found between the variables :*
 # 7_Conclusions
 *As expected, the accuracy of the model is much better in the regions where the number of requests is __higher__. According to all the available data and results, it can be said that the model is accurate. However, it is possible to increase the accuracy of the model in __low demand__ areas by increasing the amount of data or their time intervals.*
 
-*Also, to increase the accuracy of the model in general, data such as traffic and the amount of taxi drop-offs in each area can be used as effective features.*
+*Also, to increase the accuracy of the model in general, data such as `traffic` and the amount of `taxi drop-offs` in each area can be used as effective features.*
 
-*It seems like there is a big gap between the product creation and the product use. There are lots of tools for data scientist to analyse data, clean, transform, train models, visualize data, etc. But once all that work is done, we need to put into production, create a product that someone unskilled in the field can use, for example, a web application. Streamlit seems to be the best option, and yet it is in very early stages. For this reason I encountered a significant number of bugs in streamlit while trying to integrate an altair choropleth map. This made me realise of how young is still the Data Science field and some of its tools.*
+*It seems like there is a **big gap** between the product creation and the product use. There are lots of tools for data scientist to analyse data, clean, transform, train models, visualize data, etc. But once all that work is done, we need to put into production, create a product that someone unskilled in the field can use, for example, a web application. Streamlit seems to be the best option, and yet it is in very early stages. For this reason I encountered a significant number of bugs in streamlit while trying to integrate an altair **choropleth map**. This made me realise of how young is still the Data Science field and some of its tools.*
 
 ---
 
