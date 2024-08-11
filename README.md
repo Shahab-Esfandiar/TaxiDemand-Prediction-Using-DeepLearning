@@ -211,7 +211,7 @@ These are the relations found between the variables :*
 
 ---
 
-**I hope this repo is useful for you and I will be honored if you share your thoughts about the project with me 😄.**
+**I hope this repo is useful for you and I will be honored if you share your thoughts about that with me 😄.**
 
 
 
