@@ -1,32 +1,26 @@
 import streamlit as st
 import pandas as pd
 import geopandas as gpd
-import folium
-from streamlit_folium import st_folium
+import matplotlib.pyplot as plt
 from datetime import datetime
-
-# Set the page layout to wide
-st.set_page_config(layout="wide")
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 # Load data
-shapefile_path = 'D:/UNI/Term 9/Project/Data/manhattan_zones.shp'
+shapefile_path = "D:/UNI/Term 9/Project/Data/Raw/Zone/taxi_zones.shp"
 predicted_csv_path = 'D:/UNI/Term 9/Project/Data/forecast_pred.csv'
 
 gdf = gpd.read_file(shapefile_path)
 predicted_df = pd.read_csv(predicted_csv_path, parse_dates=['datetime'])
 
-# Convert LID columns to integers
-predicted_df.columns = ['datetime'] + [int(col.split('_')[1]) for col in predicted_df.columns[1:]]
-
 # Title and description
 st.title('Predicted Taxi Requests in Manhattan')
 st.write('This project visualizes the predicted taxi requests in Manhattan for different days and hours. '
-         'You can select a specific day and hour to see the predicted taxi requests on the map. '
-         'The map uses a blue color scale where darker shades indicate higher demand.')
+        'You can select a specific day and hour to see the predicted taxi requests on the map. '
+        'The map uses a blue color scale where darker shades indicate higher demand.')
 
 # Create a container for the layout
 with st.container():
-    col1, col2 = st.columns([1, 3], gap="large")
+    col1, col2 = st.columns([1, 2], gap="medium")
 
     with col1:
         st.markdown("### Select Day and Hour")
@@ -39,37 +33,40 @@ with st.container():
     filtered_predicted_df = predicted_df[(predicted_df['day'] == day) & (predicted_df['hour'] == hour)]
 
     # Function to create choropleth map
-    def create_choropleth(data, title):
-        
-        m = folium.Map(location=[40.7831, -73.9712], zoom_start=12)
+    def create_choropleth(test_df, ax, title):
+        manhattan_data = test_df.filter(regex='LID_').sum().rename_axis('LocationID').reset_index()
+        manhattan_data['LocationID'] = manhattan_data['LocationID'].str.extract('(\d+)').astype(int)
+        manhattan_data.rename(columns={0: 'taxi_requests'}, inplace=True)
 
-        # Add choropleth layer
-        folium.Choropleth(
-            geo_data=gdf,
-            name='choropleth',
-            data=data,
-            columns=['LocationID', 'value'],
-            key_on='feature.properties.LocationID',
-            fill_color='Blues',
-            fill_opacity=1,
-            line_opacity=0.5,
-            legend_name=title
-        ).add_to(m)
-        
-        # Add ID markers
-        for _, r in gdf.iterrows():
-            folium.Marker(
-                location=[r['geometry'].centroid.y, r['geometry'].centroid.x],
-                icon=folium.DivIcon(html=f"""<div style="font-size: 10pt; color : black; background-color: rgba(255, 255, 255, 0.7); padding: 2px;">{r['LocationID']}</div>""")
-            ).add_to(m)
-        
-        return m
+        manhattan_gdf = gdf[gdf['LocationID'].isin(manhattan_data['LocationID'])]
+        manhattan_gdf = manhattan_gdf.merge(manhattan_data, on='LocationID')
 
-    # Create predicted map
-    predicted_data = filtered_predicted_df.melt(id_vars=['datetime', 'day', 'hour'], var_name='LocationID', value_name='value')
-    predicted_map = create_choropleth(predicted_data, 'Predicted Taxi Requests')
+        manhattan_gdf.plot(column='taxi_requests', ax=ax, cmap='Blues', edgecolor='black', linewidth=0.8)
+        ax.set_facecolor('lightgray')
+        ax.set_xticks([])
+        ax.set_yticks([])
 
+        for idx, row in manhattan_gdf.iterrows():
+            ax.annotate(text=row['LocationID'], xy=(row['geometry'].centroid.x, row['geometry'].centroid.y),
+                        horizontalalignment='center', fontsize=4, color='black', weight='bold')
+
+    # Create a figure with one subplot
+    fig, ax = plt.subplots(1, 1, figsize=(8, 5))
+
+    # Create choropleth map for predicted taxi requests volume
+    create_choropleth(filtered_predicted_df, ax, 'Predicted Taxi Requests Volume')
+
+    # Add a colorbar to the figure
+    cax = fig.add_axes([0.7, 0.1, 0.05, 0.8])
+    sm = plt.cm.ScalarMappable(cmap='Blues', norm=plt.Normalize(
+        vmin=filtered_predicted_df.filter(regex='LID_').sum().min(), 
+        vmax=filtered_predicted_df.filter(regex='LID_').sum().max()
+    ))
+    fig.colorbar(sm, cax=cax)
+
+    # Display the plot in Streamlit
     with col2:
         st.subheader(f'{day} at {hour}:00')
         st.write('Predicted Data')
-        st_folium(predicted_map, width=1200, height=700)
+        st.pyplot(fig)
+        
