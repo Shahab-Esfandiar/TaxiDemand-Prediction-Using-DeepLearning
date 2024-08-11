@@ -193,7 +193,7 @@ These are the relations found between the variables :*
   1. Clone or download the **repository**.
   2. navigate to ``TaxiDemand-Prediction-Using-DeepLearning\``.
   3. Type ``streamlit run StreamlitMap.py`` in the command line.
-  4. Copy the returned Network URL like `(http://172.19.0.1:8501)` and paste in your internet browser.
+  4. Copy the returned Network URL like `[(http://172.19.0.1:8501)](http://localhost:8501)` and paste in your internet browser.
   5. That´s it! The app takes a couple of seconds to load cause using __Big data__.
 
 **Note**:  *There are multiple environments on which you can execute the app and I am not capable to cover them all. So these steps refer to my personal environment(Windows 11)*
